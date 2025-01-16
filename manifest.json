@@ -1,0 +1,22 @@
+{
+  "description": "Adds a new text-box to the webpage of the GLS Bank, and copies from there IBAN, amount, subject, etc to the fields of the cash transfer form",
+  "manifest_version": 2,
+  "name": "gls_invoice_parser",
+  "version": "0.1",
+  "homepage_url": "https://kkrach.de/gls_invoice_parser/",
+  "icons": {
+    "48": "icons/gls-invoice-parsing-48.png",
+    "96": "icons/gls-invoice-parsing-96.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.gls-online-filiale.de/*"],
+      "js": ["main.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "gls_invoice_parser@kkrach.de"
+    }
+}
+}
