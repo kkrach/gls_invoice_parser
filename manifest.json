@@ -11,7 +11,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.gls-online-filiale.de/*"],
-      "js": ["main.js", "parsing.js"]
+      "js": ["main.js", "parser.js"]
     }
   ],
   "browser_specific_settings": {

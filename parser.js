@@ -6,8 +6,8 @@
  * Tested: Firefox 134.0 (64 bit)
  */
 
+
 function parse_invoice_text(text) {
-	window.alert("not implemented yet: " + text);
 
 	var recipient = "Charly";
 	var iban = "DE01 2345 6789 0123 4567 89"
@@ -20,4 +20,8 @@ function parse_invoice_text(text) {
 		amount: amount,
 		intended_use: intended_use
 	};
+}
+
+if (typeof module != 'undefined') {
+	module.exports = { parse_invoice_text };
 }
