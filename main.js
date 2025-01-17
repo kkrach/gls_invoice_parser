@@ -106,12 +106,16 @@ function parse_invoice_input() {
 	}
 
 	// parse given text
-	var values = parse_invoice_text(src.value);
+	const { recipient, iban, amount, intended_use, unparsable } = parse_invoice_text(src.value);
 
-	getRecipientInput().value = values.recipient;
-	getIbanInput().value = values.iban;
-	getAmountInput().value = values.amount;
-	getIntendedUseInput().value = values.intended_use;
+	console.log("Received recipient='" + recipient + "' iban='" + iban + "' amount='" + amount + "' intended_use='" + intended_use);
+	console.log("Unparsable='" + unparsable + "'");
+
+	if (recipient)    getRecipientInput().value = recipient;
+	if (iban)         getIbanInput().value = iban;
+	if (amount)       getAmountInput().value = amount;
+	if (intended_use) getIntendedUseInput().value = intended_use;
+	src.value = unparsable.trim();
 }
 
 function createInvoiceParserInput() {
