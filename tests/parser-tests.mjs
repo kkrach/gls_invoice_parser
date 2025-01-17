@@ -107,7 +107,7 @@ Commerzbank
 
 
 
-function test_parser({ invoice_text: invoice_text, recipient: recipient, iban: iban, amount: amount, intended_use: intended_use } ) {
+function test_parser({ invoice_text: invoice_text, recipient: target_recipient, iban: target_iban, amount: target_amount, intended_use: target_intended_use } ) {
 	if (typeof test_parser.counter == 'undefined') {
 		test_parser.counter = 0;
 	}
@@ -115,33 +115,33 @@ function test_parser({ invoice_text: invoice_text, recipient: recipient, iban: i
 
 	//console.log(invoice_text);
 
-	var result = parse_invoice_text(invoice_text);
+	const { recipient, iban, amount, intended_use } = parse_invoice_text(invoice_text);
 
-	if (result.recipient != recipient) {
-		console.error("[" + test_parser.counter + "] ERROR: Recipient is '" + result.recipient + "' but '" + recipient + "' expected" );
+	if (target_recipient != recipient) {
+		console.error("[" + test_parser.counter + "] ERROR: Recipient is '" + recipient + "' but '" + target_recipient + "' expected" );
 	}
 	else {
-		console.log("[" + test_parser.counter + "]    OK: Recipient '" + result.recipient + "'");
+		console.log("[" + test_parser.counter + "]    OK: Recipient '" + recipient + "'");
 	}
 
-	if (result.iban != iban) {
-		console.error("[" + test_parser.counter + "] ERROR: IBAN is '" + result.iban + "' but '" + iban + "' expected" );
+	if (target_iban != iban) {
+		console.error("[" + test_parser.counter + "] ERROR: IBAN is '" + iban + "' but '" + target_iban + "' expected" );
 	}
 	else {
-		console.log("[" + test_parser.counter + "]    OK: IBAN '" + result.iban + "'");
+		console.log("[" + test_parser.counter + "]    OK: IBAN '" + iban + "'");
 	}
 
-	if (result.amount != amount) {
-		console.error("[" + test_parser.counter + "] ERROR: Amount is '" + result.amount + "' but '" + amount + "' expected" );
+	if (target_amount != amount) {
+		console.error("[" + test_parser.counter + "] ERROR: Amount is '" + amount + "' but '" + target_amount + "' expected" );
 	}
 	else {
-		console.log("[" + test_parser.counter + "]    OK: Amount '" + result.amount + "'");
+		console.log("[" + test_parser.counter + "]    OK: Amount '" + amount + "'");
 	}
 
-	if (result.intended_use != intended_use) {
-		console.error("[" + test_parser.counter + "] ERROR: Intended-use is '" + result.intended_use + "' but '" + intended_use + "' expected" );
+	if (target_intended_use != intended_use) {
+		console.error("[" + test_parser.counter + "] ERROR: Intended-use is '" + intended_use + "' but '" + target_intended_use + "' expected" );
 	}
 	else {
-		console.log("[" + test_parser.counter + "]    OK: Intended-use '" + result.intended_use + "'");
+		console.log("[" + test_parser.counter + "]    OK: Intended-use '" + intended_use + "'");
 	}
 }

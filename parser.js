@@ -19,7 +19,7 @@ function parse_invoice_text(invoice_text) {
 	for (var cnt=0; cnt < invoice_lines.length; cnt++) {
 		var line = invoice_lines[cnt];
 		if (line.trim().length > 0) {
-			if ((result = line.match(/Empfänger\s*:?(.*)/i)) != null) {
+			if ((result = line.match(/Empfänger\s*[: ]+(.*)/i)) != null) {
 				// use next line, if result[1] is empty
 				if (result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
 				if (!recipient) {
