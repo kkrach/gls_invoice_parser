@@ -92,10 +92,10 @@ function getFirstParentWithTagname(elem, tagname) {
 	return getFirstParentWithTagname(elem.parentElement, tagname);
 }
 
-function open_info_window() {
-	// open some info at kkrach.de
-	window.alert("Not implemented");
-}
+//function open_info_window() {
+//	// open some info at kkrach.de
+//	window.alert("Not implemented");
+//}
 
 function parse_invoice_input() {
 	var srcId = "invoice-parser-textarea";
@@ -134,15 +134,15 @@ function createInvoiceParserInput() {
 	infix.className = "mat-mdc-form-field-infix";
 	flex.appendChild(infix);
 
-	var info = document.createElement("div");
-	info.className = "kf-field-char-counter";
-	infix.appendChild(info);
-
-	var infoSpan = document.createElement("span");
-	infoSpan.appendChild(document.createTextNode("ⓘ"));
-	infoSpan.style.cursor = "pointer";
-	infoSpan.onclick = open_info_window;
-	info.appendChild(infoSpan);
+//	var info = document.createElement("div");
+//	info.className = "kf-field-char-counter";
+//	infix.appendChild(info);
+//
+//	var infoSpan = document.createElement("span");
+//	infoSpan.appendChild(document.createTextNode("ⓘ"));
+//	infoSpan.style.cursor = "pointer";
+//	infoSpan.onclick = open_info_window;
+//	info.appendChild(infoSpan);
 
 	var label = document.createElement("label");
 	label.className = "mdc-floating-label mat-mdc-floating-label ng-star-inserted mdc-floating-label--float-above";
