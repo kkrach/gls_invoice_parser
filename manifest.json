@@ -5,8 +5,8 @@
 	"version": "0.1",
 	"homepage_url": "https://kkrach.de/gls_invoice_parser/",
 	"icons": {
-		"48": "icons/gls-invoice-parsing-48.png",
-		"96": "icons/gls-invoice-parsing-96.png"
+		"48": "icons/gls-invoice-parser-48.png",
+		"96": "icons/gls-invoice-parser-96.png"
 	},
 	"default_locale": "en",
 	"content_scripts": [
