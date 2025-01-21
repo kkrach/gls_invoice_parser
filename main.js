@@ -119,6 +119,9 @@ function parse_invoice_input() {
 }
 
 function createInvoiceParserInput() {
+	let parse_button_text = browser.i18n.getMessage("parseButtonText");
+	let input_box_description = browser.i18n.getMessage("inputBoxDescription");
+
 	var container = document.createElement("div");
 	container.className = "d-flex justify-content-start kf-margin-bottom-16 function-button-row";
 
@@ -153,7 +156,7 @@ function createInvoiceParserInput() {
 	infix.appendChild(label);
 
 	var matLabel = document.createElement("mat-label");
-	matLabel.appendChild(document.createTextNode("Paste your invoice here - and click on 'parse' afterwards"));
+	matLabel.appendChild(document.createTextNode(input_box_description));
 	label.appendChild(matLabel);
 
 	var inputField = document.createElement("textarea");
@@ -167,7 +170,7 @@ function createInvoiceParserInput() {
 	button.className = "kf-button-min-size-s function-button mdc-button mat-mdc-button mat-primary mat-mdc-button-base ng-star-inserted";
 	button.type = "button";
 	button.onclick = parse_invoice_input;
-	button.appendChild(document.createTextNode("Parse"));
+	button.appendChild(document.createTextNode(parse_button_text));
 	container.appendChild(button);
 
 	return container;

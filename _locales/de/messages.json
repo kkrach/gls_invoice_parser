@@ -1,0 +1,22 @@
+{
+	"extensionName": {
+		"message": "GLS Invoice Parser",
+		"description": "Name of the extension."
+	},
+
+	"extensionDescription": {
+		"message": "Fügt der Überweisungsseite der GLS Bank ein neues Feld hinzu. Kopiert man dort den Rechnungstext hinein, können IBAN, der Betrag, Verwendungszweck, etc. in die dafür vorgesehenden Felder kopiert werden.",
+		"description": "Description of the extension."
+	},
+
+	"inputBoxDescription": {
+		"message": "Füge hier deinen Rechnungstext ein und klicke anschließend auf 'Übernehmen'",
+		"description": "Description within the input text box"
+	},
+
+	"parseButtonText": {
+		"message": "Übernehmen",
+		"description": "Text of the button to parse the text"
+	}
+}
+

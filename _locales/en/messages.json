@@ -1,0 +1,22 @@
+{
+	"extensionName": {
+		"message": "GLS Invoice Parser",
+		"description": "Name of the extension."
+	},
+
+	"extensionDescription": {
+		"message": "Adds a new text-box to the webpage of the GLS Bank, and copies from there IBAN, amount, subject, etc to the fields of the cash transfer form",
+		"description": "Description of the extension."
+	},
+
+	"inputBoxDescription": {
+		"message": "Paste your invoice here - and click on 'parse' afterwards",
+		"description": "Description within the input text box"
+	},
+
+	"parseButtonText": {
+		"message": "parse",
+		"description": "Text of the button to parse the text"
+	}
+}
+
