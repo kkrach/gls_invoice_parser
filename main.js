@@ -111,11 +111,32 @@ function parse_invoice_input() {
 	console.log("Received recipient='" + recipient + "' iban='" + iban + "' amount='" + amount + "' intended_use='" + intended_use);
 	console.log("Unparsable='" + unparsable + "'");
 
-	if (recipient)    getRecipientInput().value = recipient;
-	if (iban)         getIbanInput().value = iban;
-	if (amount)       getAmountInput().value = amount;
-	if (intended_use) getIntendedUseInput().value = intended_use;
+	if (recipient) {
+		var element = getRecipientInput();
+		element.value = recipient;
+		element.dispatchEvent(new Event('input', { bubbles: true }));
+		element.focus();
+	}
+	if (iban) {
+		var element = getIbanInput();
+		element.value = iban;
+		element.dispatchEvent(new Event('input', { bubbles: true }));
+		element.focus();
+	}
+	if (amount) {
+		var element = getAmountInput();
+		element.value = amount;
+		element.dispatchEvent(new Event('input', { bubbles: true }));
+		element.focus();
+	}
+	if (intended_use) {
+		var element = getIntendedUseInput();
+		element.value = intended_use;
+		element.dispatchEvent(new Event('input', { bubbles: true }));
+		element.focus();
+	}
 	src.value = unparsable.trim();
+	src.focus();
 }
 
 function createInvoiceParserInput() {
@@ -153,9 +174,11 @@ function createInvoiceParserInput() {
 
 	var label = document.createElement("label");
 	label.className = "mdc-floating-label mat-mdc-floating-label ng-star-inserted mdc-floating-label--float-above";
+	label.setAttribute("for", "invoice-parser-textarea");
 	infix.appendChild(label);
 
 	var matLabel = document.createElement("mat-label");
+	matLabel.setAttribute("for", "invoice-parser-textarea");
 	matLabel.appendChild(document.createTextNode(input_box_description));
 	label.appendChild(matLabel);
 

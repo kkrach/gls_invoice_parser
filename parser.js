@@ -33,6 +33,13 @@ function parse_invoice_text(invoice_text) {
 					recipient = result[1];
 				}
 			}
+			else if ((result = line.match(/Recipient\s*:?(.*)/i)) != null) {
+				// use next line, as long result[1] is empty
+				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
+				if (!recipient) {
+					recipient = result[1];
+				}
+			}
 			else if ((result = line.match(/IBAN\s*:?\s*(D?E?[0-9 ]*)/i)) != null) {
 				// use next line, as long result[1] is empty
 				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
@@ -69,6 +76,13 @@ function parse_invoice_text(invoice_text) {
 				}
 			}
 			else if ((result = line.match(/Gesamt\s*:?(.*)/i)) != null) {
+				// use next line, as long result[1] is empty
+				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
+				if (!amount) {
+					amount = result[1].replace(/EUR|€/, "");
+				}
+			}
+			else if ((result = line.match(/Amount\s*:?(.*)/i)) != null) {
 				// use next line, as long result[1] is empty
 				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
 				if (!amount) {
