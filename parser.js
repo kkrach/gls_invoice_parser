@@ -34,7 +34,7 @@ function parse_invoice_text(invoice_text) {
 				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
 				recipient = result[1];
 			}
-			else if (!iban && (result = line.match(/IBAN\s*:?\s*(D?E?[0-9 ]*)/i)) != null) {
+			else if (!iban && (result = line.match(/IBAN\s*:?\s*(([A-Z][A-Z][0-9 ]*[0-9])?)/i)) != null) {
 				// use next line, as long result[1] is empty
 				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
 				iban = result[1];
