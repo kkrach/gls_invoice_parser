@@ -18,7 +18,6 @@ function requiredElementsFound() {
 		getIntendedUseInput();
 		return true;
 	} catch (e) {
-		console.debug("GIP: " + e);
 		return false;
 	}
 }
@@ -111,32 +110,41 @@ function parse_invoice_input() {
 	console.log("Received recipient='" + recipient + "' iban='" + iban + "' amount='" + amount + "' intended_use='" + intended_use);
 	console.log("Unparsable='" + unparsable + "'");
 
+	var valuesInserted = false;
 	if (recipient) {
 		var element = getRecipientInput();
 		element.value = recipient;
 		element.dispatchEvent(new Event('input', { bubbles: true }));
 		element.focus();
+		valuesInserted = true;
 	}
 	if (iban) {
 		var element = getIbanInput();
 		element.value = iban;
 		element.dispatchEvent(new Event('input', { bubbles: true }));
 		element.focus();
+		valuesInserted = true;
 	}
 	if (amount) {
 		var element = getAmountInput();
 		element.value = amount;
 		element.dispatchEvent(new Event('input', { bubbles: true }));
 		element.focus();
+		valuesInserted = true;
 	}
 	if (intended_use) {
 		var element = getIntendedUseInput();
 		element.value = intended_use;
 		element.dispatchEvent(new Event('input', { bubbles: true }));
 		element.focus();
+		valuesInserted = true;
 	}
-	src.value = unparsable.trim();
+	//src.value = unparsable.trim();
 	src.focus();
+	if (valuesInserted) {
+		var verifyMessage = document.getElementById("invoce-parser-verify-msg");
+		verifyMessage.style.visibility = "visible";
+	}
 }
 
 function createInvoiceParserInput() {
@@ -188,6 +196,17 @@ function createInvoiceParserInput() {
 	inputField.style.height = "120px";
 	//inputField.appendChild(document.createTextNode("lala"));
 	infix.appendChild(inputField);
+
+	var verifyMessage = document.createElement("div");
+	verifyMessage.id = "invoce-parser-verify-msg";
+	verifyMessage.style = "color: #00d75c; text-align: center; visibility: hidden";
+	var verifyIcon = document.createElement("span");
+	verifyIcon.className="kf-icon-font-container";
+	verifyIcon.style = "font-family: kf-icon-font-24; font-size: 24pt; position: relative; top: 10px;";
+	verifyIcon.appendChild(document.createTextNode("ic_warnschild_24"));
+	verifyMessage.appendChild(verifyIcon);
+	verifyMessage.appendChild(document.createTextNode(" The content was parsed successfully! Please verify the inserted data..."));
+	form.appendChild(verifyMessage);
 
 	var button = document.createElement("button");
 	button.className = "kf-button-min-size-s function-button mdc-button mat-mdc-button mat-primary mat-mdc-button-base ng-star-inserted";
