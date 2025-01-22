@@ -37,7 +37,9 @@ function parse_invoice_text(invoice_text) {
 			else if (!iban && (result = line.match(/IBAN\s*:?\s*(([A-Z][A-Z][0-9 ]*[0-9])?)/i)) != null) {
 				// use next line, as long result[1] is empty
 				while (cnt < invoice_lines.length && result[1].trim().length == 0) result[1] = invoice_lines[++cnt];
-				iban = result[1];
+				if (result[1]) {
+					iban = result[1];
+				}
 			}
 //			else if ((result = line.match(/.*BIC\s*:?\s*([A-Z0-9]*)/i)) != null) {
 //				// use next line, as long result[1] is empty
