@@ -72,8 +72,6 @@ Sollten Sie noch weitere Fragen zu dieser Bestellung haben, dann geben Sie bitte
 recipient: "Günther Mustermann", iban: "DE06 1234 0180 0149 0770 14", amount: "", intended_use: "" } );
 
 
-
-
 test_parser( { invoice_text: `Bankverbindung:
  		
 		Vorkassen-Konto:
@@ -104,6 +102,13 @@ Konto Nr.: 6627699
 Commerzbank
 
 `, recipient: "MMKS GmbH", iban: "DE12345678901234567890", amount: "", intended_use: "" } );
+
+
+test_parser( { invoice_text: `Spendenkonto
+Parlamentwatch e.V., Kto.: 2011 120 000, BLZ: 430 609 67 bei der GLS Bank,
+IBAN: DE03 4306 1234 2011 1234 00, BIC: GENODEM1GLS
+Als gemeinnütziger Verein stellen wir Ihnen gerne eine Spendenbescheinigung aus.
+`, recipient: "", iban: "DE03 4306 1234 2011 1234 00", amount: "", intended_use: ""} );
 
 
 // template and test for empty input
