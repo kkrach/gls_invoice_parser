@@ -16,26 +16,26 @@ test_parser( { invoice_text: `Überweisung an CHECK24
 Zahlungsempfänger:
 CHECK24
 IBAN:
-DE12345678901234567890
+DE38500105176236816368
 BIC:
-COBADEFFXXX (Commerzbank)
+INGDDEFFXXX (ING-DIBA AG (RETAIL BANKING))
 Betrag:
 12,22 EUR
 Verwendungszweck:
-2017-22883773-1 Markus Mustermann`, recipient: "CHECK24", iban: "DE12345678901234567890", amount: "12,22", intended_use: "2017-22883773-1 Markus Mustermann" } );
+2017-22883773-1 Markus Mustermann`, recipient: "CHECK24", iban: "DE38500105176236816368", amount: "12,22", intended_use: "2017-22883773-1 Markus Mustermann" } );
 
 
 test_parser( { invoice_text: `Unsere Bankverbindung::
-IBAN: NL12345678901234567890
-BIC: COBADEFFXXX
+IBAN: DE38500105176236816368
+BIC: INGDDEFFXXX
 AMBIENDO GmbH & Co. KG
 Verwendungszweck: 29083773893
-Betrag: 87,21 EUR`, recipient: "", iban: "NL12345678901234567890", amount: "87,21", intended_use: "29083773893" } );
+Betrag: 87,21 EUR`, recipient: "", iban: "DE38500105176236816368", amount: "87,21", intended_use: "29083773893" } );
 
 
 test_parser( { invoice_text: `Bankverbindung:
-IBAN: PT12345678901234567890
-SWIFT/BIC: NOLADE21UEL
+IBAN: DE38500105176236816368
+SWIFT/BIC: INGDDEFFXXX
 Kontonummer 1234567 von Hobbydirekt Modellbau
 BLZ: 25850110 bei der BB Uelzen
 Bei Zahlung per Bitcoin unsere Empfängeradresse: 3FLbjYnqZzKJ5SmRfaLKe5mxsX
@@ -44,7 +44,7 @@ Kontoinhaber:
 Hobbydirekt Modellbau e.K.
 Stefan Mustermann
 Im Lock 13
-D-334532 Berlin`, recipient: "Hobbydirekt Modellbau e.K.", iban: "PT12345678901234567890", amount: "", intended_use: "Ihre Auftragsnummer" } );
+D-334532 Berlin`, recipient: "Hobbydirekt Modellbau e.K.", iban: "DE38500105176236816368", amount: "", intended_use: "Ihre Auftragsnummer" } );
 
 
 test_parser( { invoice_text: `Überweisung per Vorkasse
@@ -56,8 +56,8 @@ Betreff: Ihre Bestellnummer
 Postbank Stuttgart
 
 Internationale Zahlungen:
-IBAN: GB12345678901234567890
-BIC / SWIFT: PBNKDEFF`, recipient: "", iban: "GB12345678901234567890", amount: "", intended_use: "Ihre Bestellnummer" } );
+IBAN: DE38500105176236816368
+BIC / SWIFT: INGDDEFFXXX`, recipient: "", iban: "DE38500105176236816368", amount: "", intended_use: "Ihre Bestellnummer" } );
 
 
 test_parser( { invoice_text: ` Bankverbindung:
@@ -65,11 +65,11 @@ Bankinstitut: Aachener Bank
 Bankleitzahl: 12345678
 Kontonummer: 12345678
 Inhaber: Günther Mustermann
-IBAN: DE06 1234 0180 0149 0770 14
-BIC: GENODED1AAC
+IBAN: DE38 5001 0517 6236 8163 68
+BIC: INGDDEFFXXX
 R Ü C K F R A G E N:
 Sollten Sie noch weitere Fragen zu dieser Bestellung haben, dann geben Sie bitte in jeder Email die Bestellnr. 271391 an.`,
-recipient: "Günther Mustermann", iban: "DE06 1234 0180 0149 0770 14", amount: "", intended_use: "" } );
+recipient: "Günther Mustermann", iban: "DE38 5001 0517 6236 8163 68", amount: "", intended_use: "" } );
 
 
 test_parser( { invoice_text: `Bankverbindung:
@@ -95,20 +95,20 @@ test_parser( { invoice_text: `
 Empfänger:
 
 MMKS GmbH
-BIC/SWIFT: COBADEFF700
-IBAN: DE12345678901234567890
+BIC/SWIFT: INGDDEFFXXX
+IBAN: DE38500105176236816368
 BLZ: 700 400 41
 Konto Nr.: 6627699
 Commerzbank
 
-`, recipient: "MMKS GmbH", iban: "DE12345678901234567890", amount: "", intended_use: "" } );
+`, recipient: "MMKS GmbH", iban: "DE38500105176236816368", amount: "", intended_use: "" } );
 
 
 test_parser( { invoice_text: `Spendenkonto
 Parlamentwatch e.V., Kto.: 2011 120 000, BLZ: 430 609 67 bei der GLS Bank,
-IBAN: DE03 4306 1234 2011 1234 00, BIC: GENODEM1GLS
+IBAN: DE38 5001 0517 6236 8163 68, BIC: GENODEM1GLS
 Als gemeinnütziger Verein stellen wir Ihnen gerne eine Spendenbescheinigung aus.
-`, recipient: "", iban: "DE03 4306 1234 2011 1234 00", amount: "", intended_use: ""} );
+`, recipient: "", iban: "DE38 5001 0517 6236 8163 68", amount: "", intended_use: ""} );
 
 
 // template and test for empty input
