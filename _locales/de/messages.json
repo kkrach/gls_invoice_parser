@@ -17,6 +17,11 @@
 	"parseButtonText": {
 		"message": "Übernehmen",
 		"description": "Text of the button to parse the text"
+	},
+
+	"verifyInputMessage": {
+		"message": "Die Daten wurden erfolgreich übertragen. Bitte prüfen Sie diese auf Korrektheit!",
+		"description": "Message which is displayed after parsing succeeds. Reminds that parsing can be error-prone"
 	}
 }
 

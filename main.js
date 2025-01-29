@@ -150,6 +150,7 @@ function parse_invoice_input() {
 function createInvoiceParserInput() {
 	let parse_button_text = browser.i18n.getMessage("parseButtonText");
 	let input_box_description = browser.i18n.getMessage("inputBoxDescription");
+	let verify_input_message = browser.i18n.getMessage("verifyInputMessage");
 
 	var container = document.createElement("div");
 	container.className = "d-flex justify-content-start kf-margin-bottom-16 function-button-row";
@@ -194,18 +195,18 @@ function createInvoiceParserInput() {
 	inputField.id = "invoice-parser-textarea";
 	inputField.className = "mat-mdc-input-element cdk-textarea-autosize mat-mdc-form-field-textarea-control mat-mdc-form-field-input-control mdc-text-field__input ng-untouched ng-pristine ng-valid cdk-text-field-autofill-monitored";
 	inputField.style.height = "120px";
-	//inputField.appendChild(document.createTextNode("lala"));
 	infix.appendChild(inputField);
 
 	var verifyMessage = document.createElement("div");
 	verifyMessage.id = "invoce-parser-verify-msg";
 	verifyMessage.style = "color: #00d75c; text-align: center; visibility: hidden";
-	var verifyIcon = document.createElement("span");
-	verifyIcon.className="kf-icon-font-container";
-	verifyIcon.style = "font-family: kf-icon-font-24; font-size: 24pt; position: relative; top: 10px;";
-	verifyIcon.appendChild(document.createTextNode("ic_warnschild_24"));
-	verifyMessage.appendChild(verifyIcon);
-	verifyMessage.appendChild(document.createTextNode(" The content was parsed successfully! Please verify the inserted data..."));
+//	var verifyIcon = document.createElement("span");
+//	verifyIcon.className="kf-icon-font-container";
+//	verifyIcon.style = "font-family: kf-icon-font-24; font-size: 24pt; position: relative; top: 10px;";
+//	verifyIcon.appendChild(document.createTextNode("ic_warnschild_24"));
+//	verifyMessage.appendChild(verifyIcon);
+//	verifyMessage.appendChild(document.createTextNode(" "));
+	verifyMessage.appendChild(document.createTextNode(verify_input_message));
 	form.appendChild(verifyMessage);
 
 	var button = document.createElement("button");
