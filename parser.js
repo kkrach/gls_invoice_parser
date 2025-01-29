@@ -103,7 +103,35 @@ function parse_invoice_text(invoice_text) {
 	};
 }
 
+function reformat_amount(amount, lang) {
+	var formatted = "n/a";
+
+	var decSep = amount.substring(amount.length - 3, amount.length - 2);
+	if (decSep == ',' || decSep == '.') {
+		var intVal = amount.substring(0, amount.length - 3).replace(/[ ,.]/i, '');
+		var decVal = amount.substring(amount.length - 2);
+
+		if (lang.startsWith("en-")) {
+			formatted = intVal + "." + decVal;
+		}
+		else if (lang.startsWith("de-")) {
+			formatted = intVal + "," + decVal;
+		}
+		else {
+			// not supported
+			formatted = amount;
+		}
+	}
+	else {
+		// assuming no decimal separator
+		formatted = amount.replace(/[ ,.]/i, '');
+	}
+
+	//console.log("Reformatting amount '" + amount + "' to '" + formatted + "' for language " + lang);
+	return formatted;
+}
+
 // needed for node.js tests
 if (typeof module != 'undefined') {
-	module.exports = { parse_invoice_text };
+	module.exports = { parse_invoice_text, reformat_amount };
 }

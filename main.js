@@ -127,7 +127,8 @@ function parse_invoice_input() {
 	}
 	if (amount) {
 		var element = getAmountInput();
-		element.value = amount;
+		element.value = reformat_amount(amount, browser.i18n.getUILanguage());
+		console.log("Reformatting amount '" + amount + "' to '" + element.value + "' for language " + browser.i18n.getUILanguage());
 		element.dispatchEvent(new Event('input', { bubbles: true }));
 		element.focus();
 		valuesInserted = true;

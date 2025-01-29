@@ -9,7 +9,7 @@
  */
 
 import pkg from '../parser.js';
-const { parse_invoice_text } = pkg;
+const { parse_invoice_text, reformat_amount } = pkg;
 
 
 test_parser( { invoice_text: `Überweisung an CHECK24
@@ -152,5 +152,73 @@ function test_parser({ invoice_text: invoice_text, recipient: target_recipient, 
 	}
 	else {
 		console.log("[" + test_parser.counter + "]    OK: Intended-use '" + intended_use + "'");
+	}
+}
+
+test_amount_reformatting("12,50", "de-DE", "12,50");
+
+test_amount_reformatting("12,50", "en-US", "12.50");
+
+test_amount_reformatting("12,50", "ab-CD", "12,50");
+
+test_amount_reformatting("12.50", "de-DE", "12,50");
+
+test_amount_reformatting("12.50", "en-US", "12.50");
+
+test_amount_reformatting("12.50", "ab-CD", "12.50");
+
+test_amount_reformatting("12", "de-DE", "12");
+
+test_amount_reformatting("12", "en-US", "12");
+
+
+test_amount_reformatting("1.312,50", "de-DE", "1312,50");
+
+test_amount_reformatting("1.312,50", "en-US", "1312.50");
+
+test_amount_reformatting("1.312,50", "ab-CD", "1.312,50");
+
+test_amount_reformatting("1,312.50", "de-DE", "1312,50");
+
+test_amount_reformatting("1,312.50", "en-US", "1312.50");
+
+test_amount_reformatting("1,312.50", "ab-CD", "1,312.50");
+
+test_amount_reformatting("1.312", "de-DE", "1312");
+
+test_amount_reformatting("1.312", "en-US", "1312");
+
+test_amount_reformatting("1.312", "ab-CD", "1312");
+
+test_amount_reformatting("1,312", "de-DE", "1312");
+
+test_amount_reformatting("1,312", "en-US", "1312");
+
+test_amount_reformatting("1,312", "ab-CD", "1312");
+
+test_amount_reformatting("1312", "de-DE", "1312");
+
+test_amount_reformatting("1312", "en-US", "1312");
+
+test_amount_reformatting("1312", "ab-CD", "1312");
+
+
+
+
+
+function test_amount_reformatting(amount, language, result) {
+	if (typeof test_amount_reformatting.counter == 'undefined') {
+		test_amount_reformatting.counter = 0;
+	}
+	++test_amount_reformatting.counter;
+
+	var res = reformat_amount(amount, language);
+
+	if (res != result) {
+		console.error("[" + test_amount_reformatting.counter + "] ERROR: Amount '" + amount + "' with language '" + language +
+				      "' should be '" + result + "' but is '" + res + "'")
+	}
+	else {
+		console.log("[" + test_amount_reformatting.counter + "] OK: Amount '" + amount + "' with language '" + language + "' is '" + result + "'");
 	}
 }
